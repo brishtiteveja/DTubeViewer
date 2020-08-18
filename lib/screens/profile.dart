@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/api.dart';
 import '../components/videolist.dart';
-import 'package:flutter_html_view/flutter_html_text.dart';
+//import 'package:flutter_html_view/flutter_html_text.dart';
 import 'dart:convert';
 
 class ProfileScreen extends StatefulWidget {
@@ -102,10 +102,13 @@ class ProfileScreenState extends State<ProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text("No videos found."),
+                        /*
                         HtmlText(
                           data:
                               "<a href=\"https://steemit.com/utopian-io/@bostrot/introduction-a-new-steem-dtube-search-platform\">More about this.</a>",
                         )
+
+                         */
                       ],
                     ),
                   ));

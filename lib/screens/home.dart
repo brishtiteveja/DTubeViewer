@@ -104,8 +104,9 @@ class HomeScreenState extends State<HomeScreen> {
                                 items: [0, 1, 2].map((i) {
                                   return new Builder(builder: (BuildContext context) => videoItemList[i]);
                                 }).toList(),
-                                aspectRatio: 16 / 7,
-                                autoPlay: true),
+                                //aspectRatio: 16 / 7,
+                                //autoPlay: true
+                            ),
                             Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: Divider(),

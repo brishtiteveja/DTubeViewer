@@ -3,7 +3,7 @@ import 'package:simple_moment/simple_moment.dart';
 import '../components/api.dart';
 import '../components/videolist.dart';
 import 'dart:convert';
-import 'package:flutter_html_view/flutter_html_text.dart';
+//import 'package:flutter_html_view/flutter_html_text.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -199,10 +199,13 @@ class SearchScreenState extends State<SearchScreen> {
                                         children: <Widget>[
                                           Text(
                                               "Nothing found for your search..."),
+                                          /*
                                           HtmlText(
                                             data:
                                                 "<a href=\"https://steemit.com/utopian-io/@bostrot/introduction-a-new-steem-dtube-search-platform\">More about this.</a>",
                                           )
+
+                                           */
                                         ],
                                       ),
                                     ));

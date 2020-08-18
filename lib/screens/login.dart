@@ -83,9 +83,10 @@ class LoginScreenState extends State<LoginScreen> {
                   },
                 );
               }).toList(),
-              viewportFraction: 0.7,
-              height: MediaQuery.of(context).size.height - 225,
-              autoPlay: true),
+              //viewportFraction: 0.7,
+              //height: MediaQuery.of(context).size.height - 225,
+              //autoPlay: true
+          ),
           Padding(
             padding: const EdgeInsets.only(bottom: 15.0),
             child: Container(

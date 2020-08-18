@@ -5,19 +5,20 @@ import 'dart:async';
 import 'package:chewie/chewie.dart';
 import 'package:video_player/video_player.dart';
 import 'package:screen/screen.dart';
-import 'package:flutter_html_view/flutter_html_text.dart';
-import 'api.dart';
+import '../components/api.dart';
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share/share.dart';
 import 'dart:io' show Platform;
 import 'dart:convert';
-import 'package:video_launcher/video_launcher.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import '../screens/profile.dart';
 import '../components/videolist.dart';
+import 'package:flutter_html/flutter_html.dart';
+
+import 'package:video_launcher/video_launcher.dart';
 
 
 class VideoScreen extends StatefulWidget {
@@ -141,15 +142,31 @@ class VideoScreenState extends State<VideoScreen> {
             widget.meta["video"]["content"]["video${sources()[0]}hash"]);
         videoController = VideoPlayerController.network(gateway +
             widget.meta["video"]["content"]["video${sources()[0]}hash"]);
-        chewiePlayer = new Chewie(
-          videoController,
-          aspectRatio: 16 / 9,
+
+        ChewieController chewieController = new ChewieController(
+          videoPlayerController: videoController,
+          aspectRatio: 16/9,
           autoPlay: true,
           looping: false,
           placeholder: new Container(
               child: Image.network("https://snap1.d.tube/ipfs/" +
                   widget.meta['video']['info']['snaphash'])),
         );
+
+        Chewie chewiePlayer = new Chewie(
+            controller:chewieController
+        );
+
+//      new Chewie(
+//          videoController,
+//          aspectRatio: 16 / 9,
+//          autoPlay: true,
+//          looping: false,
+//          placeholder: new Container(
+//              child: Image.network("https://snap1.d.tube/ipfs/" +
+//                  widget.meta['video']['info']['snaphash'])),
+//      );
+
       });
     }
   }
@@ -492,7 +509,7 @@ class VideoScreenState extends State<VideoScreen> {
                                     ),
                                   ),
                                 ),
-                                new HtmlText(
+                                new Html(
                                     data: theme(selectedTheme)["text"] ==
                                         Colors.white
                                         ? "<p style=\"color: #fff;\">" +
@@ -612,7 +629,7 @@ class VideoScreenState extends State<VideoScreen> {
                               padding: const EdgeInsets.all(16.0),
                               child:
                               (reply["body"].toString()).length > 100
-                                  ? new HtmlText(
+                                  ? new Html(
                                   data: linkify(reply["body"]))
                                   : new Container(),
                             ),
